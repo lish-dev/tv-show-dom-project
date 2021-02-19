@@ -1,3 +1,24 @@
 #root {
-  color: red;
+  color: black;
+  
+  
+}
+
+/* .column {
+  text-align: center;
+  background-color: rgb(40, 40, 40);
+  color: white;
+  width: 300px;
+  height: 500px;
+  margin: 20px;
+  padding: 0 15px;
+  box-shadow: 5px 5px 10px black;
+} */
+
+h1 {
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+  padding: 5px 10px;
+  color: rgb(12, 12, 12);
+  font-size: 1em;
+  background-color: rgb(168, 159, 157);
 }
