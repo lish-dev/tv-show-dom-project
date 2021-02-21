@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | Elisha Mesquitta(lish-dev)</title>
-    <link href="style.css" rel="stylesheet" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  </head>
-  <body>
-    <h1>ELISHA's TV SHOWS</h1>
-    <input
-      type="text"
-      id="searchBar"
-      name="searchBar"
-      placeholder="Find show here.."
-    />
-    <select id = "cherries"></select>
-    <div id="root"></div>
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
 
-    <!-- Loads YOUR javascript code -->
-    <script src="script.js"></script>
-    <h5></h5> Disclaimer all data is supported from TVMaze.com</h5>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TV Show Project | Elisha Mesquitta(lish-dev)</title>
+  <link href="style.css" rel="stylesheet" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+  <h1>ELISHA's TV SHOWS</h1>
+  <select id="SelectionMenu"></select> 
+  <input type="text" id="searchBar" name="searchBar" placeholder="Find show here.." /> 
+  <div> Displaying <span id="number-of-episodes"></span> - <span id="total-number-of-episodes"></span></div>
+  <div id="root"></div>
+  <h5><b></S> Disclaimer all data is supported from TVMaze.com</h5>
+  <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
+  <script src="episodes.js"></script>
+
+  <!-- Loads YOUR javascript code -->
+  <script src="script.js"></script>
+</body>
+
 </html>
