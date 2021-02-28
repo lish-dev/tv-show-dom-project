@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,21 +7,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TV Show Project | Elisha Mesquitta(lish-dev)</title>
   <link href="style.css" rel="stylesheet" />
+  <link href="http://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet" type="text/css">
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
-  <h1>ELISHA's TV SHOWS</h1>
-  <select id="SelectionMenu"></select> 
-  <input type="text" id="searchBar" name="searchBar" placeholder="Find show here.." /> 
-  <div> Displaying <span id="number-of-episodes"></span> - <span id="total-number-of-episodes"></span></div>
+  <h1>TV SHOW PROJECT</h1>
+  <div id="header-for-shows">
+    <div class="dropDownBoxContainer">
+      <select id="ShowMenu" class="headerText"></select>
+      <input type="text" id="searchBarShows" name="searchBar" class="headerText" placeholder="Find show here.." />
+     
+
+    </div>
+  </div>
+  <div id="header-for-episodes">
+    <div class="dropDownBoxContainer">
+      <select id="SelectionMenu" class="headerText"></select>
+      <input type="text" id="searchBarEpisodes" name="searchBar" class="headerText" placeholder="Find episodes here.." />
+      <p class="headerText"> Displaying <span id="number-of-episodes"></span> - <span id="total-number-of-episodes"></span></p>
+
+          <button type="button" id="backButton">Back to Shows</button>
+
+    </div>
+  </div>
   <div id="root"></div>
   <h5><b></S> Disclaimer all data is supported from TVMaze.com</h5>
   <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
   <script src="episodes.js"></script>
-
+  <script src="shows.js"></script>
   <!-- Loads YOUR javascript code -->
   <script src="script.js"></script>
 </body>
 
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TV Show Project | My Name (My GitHub username)</title>
+    <link href="style.css" rel="stylesheet" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <div id="root">
+    </div>
+
+    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
+    <script src="episodes.js"></script>
+
+    <!-- Loads YOUR javascript code -->
+    <script src="script.js"></script>
+  </body>
+</html>
+>>>>>>> Stashed changes

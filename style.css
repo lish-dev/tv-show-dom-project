@@ -1,24 +1,76 @@
+body {
+    background: linear-gradient(350deg, #9fa5a6, #5c8082, #1a575b);
+    background-size: 600% 600%;
+
+    -webkit-animation: BackgroundMovement 19s ease infinite;
+    
+}
+
+@-webkit-keyframes BackgroundMovement {
+    0%{background-position:18% 0%}
+    50%{background-position:83% 100%}
+    100%{background-position:18% 0%}
+}
+
+
+.dropDownBoxContainer {
+  display: flex;
+  margin: 2rem;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
 #root {
   color: black;
-  
-  
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
 }
-
-/* .column {
-  text-align: center;
-  background-color: rgb(40, 40, 40);
-  color: white;
-  width: 300px;
-  height: 500px;
-  margin: 20px;
-  padding: 0 15px;
-  box-shadow: 5px 5px 10px black;
-} */
 
 h1 {
-  font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
-  padding: 5px 10px;
-  color: rgb(12, 12, 12);
-  font-size: 1em;
-  background-color: rgb(168, 159, 157);
+  font-family: "Oleo Script", Arial, Helvetica, sans-serif;
+  margin: auto;
+  text-align: center;
+  padding: 0.3rem 0.6rem;
+  color: rgb(58, 87, 114);
+  font-size: 1.95rem;
+  background-color: #8f8f8f;
 }
+
+.episodeGrid {
+  width: 20%;
+  margin: 1.25rem 1rem 1.25rem 1rem;
+  align-self: flex-start;
+  padding: 1rem;
+  background-color: #8f8f8f;
+  border-radius: 3%;
+  box-shadow: 5px 10px 5px;
+  transition: transform 0.3s;
+  font-weight: bolder;
+}
+
+.episodeGrid img {
+  width: 100%;
+  box-shadow: 5px 10px 5px;
+  border-radius: 3%;
+}
+
+.episodeGrid:hover {
+  transform: scale(0.9);
+}
+
+.episodeGrid h2 {
+  background-color: rgb(52, 93, 99);
+  text-align: center;
+  box-shadow: 5px 10px 5px;
+  border-radius: 3%;
+}
+
+.headerText {
+  padding: auto;
+  font-size: 1.25rem;
+  color: black;
+}
+
