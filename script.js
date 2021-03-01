@@ -1,4 +1,4 @@
-const rootElem = document.getElementById("root");
+const rootElem = document.getElementById("root"); 
 
 // this references the drop down show menu for the shows index HTML
 const showsSelect = document.getElementById("ShowMenu");
