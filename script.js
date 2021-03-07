@@ -1,4 +1,4 @@
-const rootElem = document.getElementById("root"); 
+const rootElem = document.getElementById("root");
 
 // this references the drop down show menu for the shows index HTML
 const showsSelect = document.getElementById("ShowMenu");
@@ -9,10 +9,16 @@ const selection = document.getElementById("SelectionMenu");
 // store a reference to the search bar for episodes
 const searchBarEpisodes = document.getElementById("searchBarEpisodes");
 
-// store the number of episodes returned from the search
+// store a reference to the HTML which will display the number of shows
+const numberOfShows = document.getElementById("number-of-shows");
+
+// store a reference to the HTML which will display the total number of shows
+const totalNumberOfShows = document.getElementById("total-number-of-shows");
+
+// store a reference to the HTML which will display the number of episodes
 const numberOfEpisodes = document.getElementById("number-of-episodes");
 
-// store the number of shows from the web page
+// store a reference to the HTML which will display the total number of episodes
 const totalNumberOfEpisodes = document.getElementById(
   "total-number-of-episodes"
 );
@@ -44,19 +50,25 @@ async function getShows() {
   return data;
 }
 
-//const epList = getAllEpisodes();
-function updateNumberOfEpisodes(numberOfShows, totalNumberOfShows) {
-  numberOfEpisodes.innerText = numberOfShows;
-  totalNumberOfEpisodes.innerText = totalNumberOfShows;
+function updateNumberOfShows(value, total) {
+  numberOfShows.innerText = value;
+  totalNumberOfShows.innerText = total;
+}
+
+function updateNumberOfEpisodes(value, total) {
+  numberOfEpisodes.innerText = value;
+  totalNumberOfEpisodes.innerText = total;
 }
 
 //store a reference to all episodes
 async function setup() {
   const newShows = await getShows();
   listShows(newShows);
-  dropDown2(newShows);
+  dropDownListForEpisodes(newShows);
   setUpShows(newShows);
   searchShowFunction(newShows);
+  updateNumberOfShows(newShows.length, newShows.length);
+
 }
 
 //level 500
@@ -89,13 +101,24 @@ function makePageForEpisodes(episodeList) {
   let html = "";
   // loop through episodes & append  html to variable
   episodeList.forEach((episode) => {
-    html += `<div class= "episodeGrid"> <h2>${episode.name} 
-    - Season ${seasonNumbers(episode.season)}  
-    Episode ${seasonNumbers(episode.number)} 
-    </h2>  ${
-      episode.image && `<img src = "${episode.image.medium} " alt = " ">`
+    //to display for the episodes without a picture
+    let summary = "";
+    let image =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEbc1reBfoICJRvfy0e8dLAfQsIuBY6IDONg&usqp=CAU";
+    if (episode.image) {
+      image = episode.image.medium;
     }
-    ${episode.summary}</div>`;
+    //displays the season and episode per show
+    if (episode.summary) {
+      summary = episode.summary;
+    }
+    html += `<div class= "episodeGrid"> <h2>${episode.name} 
+    - S${seasonNumbers(episode.season)}  
+    E${seasonNumbers(episode.number)} 
+    </h2> 
+       <img src = "${image} " alt = " ">
+    
+    ${summary}</div>`;
   });
   // insert my search results 'html' into the user interface.
   rootElem.innerHTML = html;
@@ -108,13 +131,13 @@ function seasonNumbers(seasonNum) {
 
 //adding data to the drop down menu
 function watchShow(watch) {
-  let tvEpisode = `<option value="0" >See all episodes</option>`;
+  let tvEpisode = `<option value="1" >See all episodes</option>`;
 
   // displays Episode name and Season number
   watch.forEach((episode) => {
     tvEpisode += `<option value="${episode.id}">
-    Season ${seasonNumbers(episode.season).toString().padStart(2, 0)}  
-    Episode ${seasonNumbers(episode.number).toString().padStart(2, 0)}
+    S ${seasonNumbers(episode.season).toString().padStart(2, 0)}  
+    E ${seasonNumbers(episode.number).toString().padStart(2, 0)}
     ${episode.name}</option>`;
   });
 
@@ -123,7 +146,7 @@ function watchShow(watch) {
 
 // this function displays the list of shows in the first drop down box starting from see all shows
 function listShows(shows) {
-  let tvShow = `<option value="0" >See all shows</option>`;
+  let tvShow = `<option value="1" >See all shows</option>`;
 
   // displays series name on the first drop down box
   shows
@@ -147,15 +170,15 @@ function listShows(shows) {
 }
 
 //when the user clicks on the drop down menu, episode data can be selected
-function dropDown(shows) {
+function dropDownListForShows(shows) {
   selection.addEventListener("change", (m) => {
     const searchId = +m.target.value;
     let filteredList = [];
     if (searchId === 0) {
       filteredList = shows;
     } else {
-      filteredList = shows.filter((popcorn) => {
-        return popcorn.id === searchId;
+      filteredList = shows.filter((series) => {
+        return series.id === searchId;
       });
     }
     rootElem.innerHTML = "";
@@ -164,7 +187,7 @@ function dropDown(shows) {
 }
 
 // when the user clicks on the first drop down menu, new shows can be selected
-function dropDown2() {
+function dropDownListForEpisodes() {
   showsSelect.addEventListener("change", async (m) => {
     const searchId = +m.target.value;
     if (searchId !== 0) {
@@ -175,7 +198,7 @@ function dropDown2() {
       rootElem.innerHTML = "";
       makePageForEpisodes(data);
       watchShow(data);
-      dropDown(data);
+      dropDownListForShows(data);
     }
   });
 }
@@ -205,6 +228,7 @@ function makePageForShows(showList) {
     <h2>${show.name}</h2>
     <h3>Genres: ${genreList}</h3>
     <h4>Rating: ${show.rating.average}</h4>
+    <h4>Run Time: ${show.runtime}</h4>
     <img src = "${show.image.medium}" alt = " "/>
     <p>${show.summary}</p>
     </div>`;
@@ -232,7 +256,7 @@ function searchShowFunction(newShowList) {
     // now I have my filtered data, present on screen
     makePageForShows(filteredNames);
     //update total for all number of episodes
-    updateNumberOfEpisodes(filteredNames.length, newShowList.length);
+    updateNumberOfShows(filteredNames.length, newShowList.length);
   });
 }
 
@@ -240,11 +264,10 @@ async function selectShow(showid) {
   const epList = await getEpisodes(showid);
   watchShow(epList);
   searchFunction(epList);
-  dropDown(epList);
+  dropDownListForShows(epList);
   updateNumberOfEpisodes(epList.length, epList.length);
   makePageForEpisodes(epList);
   toggleViews();
 }
 
 window.onload = setup;
-

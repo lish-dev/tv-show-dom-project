@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,22 +16,27 @@
     <div class="dropDownBoxContainer">
       <select id="ShowMenu" class="headerText"></select>
       <input type="text" id="searchBarShows" name="searchBar" class="headerText" placeholder="Find show here.." />
-     
+      <p class="headerText"> Displaying <span id="number-of-shows"></span> - <span
+        id="total-number-of-shows"></span></p>
+
 
     </div>
   </div>
   <div id="header-for-episodes">
     <div class="dropDownBoxContainer">
       <select id="SelectionMenu" class="headerText"></select>
-      <input type="text" id="searchBarEpisodes" name="searchBar" class="headerText" placeholder="Find episodes here.." />
-      <p class="headerText"> Displaying <span id="number-of-episodes"></span> - <span id="total-number-of-episodes"></span></p>
+      <input type="text" id="searchBarEpisodes" name="searchBar" class="headerText"
+        placeholder="Find episodes here.." />
+      <p class="headerText"> Displaying <span id="number-of-episodes"></span> - <span
+          id="total-number-of-episodes"></span></p>
 
-          <button type="button" id="backButton">Back to Shows</button>
+      <button type="button" id="backButton">Back to Series</button>
 
     </div>
   </div>
   <div id="root"></div>
-  <h5><b></S> Disclaimer all data is supported from TVMaze.com</h5>
+  <h5>The data has (originally) come from <b><a id="contact-link" href="https://www.tvmaze.com/api#licensing"
+        target="_blank"> https://www.tvmaze.com</h5>
   <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
   <script src="episodes.js"></script>
   <script src="shows.js"></script>
@@ -41,6 +45,3 @@
 </body>
 
 </html>
-
-
-
